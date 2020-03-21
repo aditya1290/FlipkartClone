@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <item
+            android:id="@+id/FlipkartPlusZone"
+            android:title="Flipkart Plus Zone"
+            />
+        <item
+            android:id="@+id/Electronics"
+            android:title="Electronics"
+            />
+        <item
+            android:id="@+id/Fashion"
+            android:title="Fashion"
+            />
+        <item
+            android:id="@+id/MobileAndTablet"
+            android:title="Mobiles and Tablets"
+            />
+        <item
+            android:id="@+id/BillsAndRecharges"
+            android:title="Bills and Recharges"
+            />
+        <item
+            android:id="@+id/Language"
+            android:title="Choose Language"
+            />
+        <item
+            android:id="@+id/MyOffer"
+            android:title="My Offer"
+            />
+        <item
+            android:id="@+id/MyCart"
+            android:title="My Cart"
+            />
+        <item
+            android:id="@+id/MyWishlist"
+            android:title="My Wishlist"
+            />
+        <item
+            android:id="@+id/MyAccount"
+            android:title="My Account"
+            />
+
+
+</menu>

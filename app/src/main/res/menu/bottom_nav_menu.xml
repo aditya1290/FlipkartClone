@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/Shop"
+        android:title="Shop"
+        android:icon="@drawable/shopping_cart_outline"
+        android:iconTint="#AA0000"
+        />
+    <item
+        android:id="@+id/SuperCoin"
+        android:title="SuperCoin"
+        android:icon="@drawable/supercoin"
+        android:iconTint="#AA0000"
+        />
+    <item
+        android:id="@+id/Ideas"
+        android:title="Ideas"
+        android:icon="@drawable/light_bulb"
+        android:iconTint="#AA0000"
+        />
+    <item
+        android:id="@+id/Video"
+        android:title="Video"
+        android:icon="@drawable/video"
+        android:iconTint="#AA0000"
+        />
+    <item
+        android:id="@+id/Games"
+        android:title="Games"
+        android:icon="@drawable/games"
+        android:iconTint="#AA0000"
+    />
+
+</menu>
