@@ -4,32 +4,30 @@
     <item
         android:id="@+id/Shop"
         android:title="Shop"
-        android:icon="@drawable/shopping_cart_outline"
-        android:iconTint="#1F5673"
+        android:icon="@drawable/cart_selector"
         />
     <item
         android:id="@+id/SuperCoin"
         android:title="SuperCoin"
-        android:icon="@drawable/supercoin"
-        android:iconTint="#1F5673"
+        android:icon="@drawable/supercoin_selector"
+
         />
     <item
         android:id="@+id/Ideas"
         android:title="Ideas"
-        android:icon="@drawable/light_bulb"
-        android:iconTint="#1F5673"
+        android:icon="@drawable/idea_selector"
         />
+
     <item
         android:id="@+id/Video"
         android:title="Video"
-        android:icon="@drawable/video"
-        android:iconTint="#1F5673"
+        android:icon="@drawable/video_selector"
         />
+
     <item
         android:id="@+id/Games"
         android:title="Games"
-        android:icon="@drawable/games"
-        android:iconTint="#1F5673"
+        android:icon="@drawable/games_selector"
     />
 
 </menu>

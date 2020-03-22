@@ -5,7 +5,8 @@
     android:layout_height="wrap_content"
     android:gravity="center"
     android:background="#123456"
-    android:paddingLeft="-15dp">
+    android:paddingLeft="-15dp"
+    android:paddingTop="20dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -27,16 +28,18 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Shopping Ghar se"
+                android:text="Shopping Ghar Se"
+                android:textStyle="italic"
                 android:gravity="center"
                 android:textSize="18sp"
                 android:layout_marginLeft="20dp"
-                android:textColor="#EE088E"
+                android:textColor="#FFFFFF"
                 />
 
 
         </LinearLayout>
 
     </RelativeLayout>
+
 
 </LinearLayout>

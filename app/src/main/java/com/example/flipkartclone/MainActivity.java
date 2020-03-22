@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -32,19 +33,28 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+        getWindow().setStatusBarColor(getResources().getColor(R.color.bg1));
+
         bottomNavigationView = findViewById(R.id.bottom_nav);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ShopFragement()).commit();
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
+        bottomNavigationView.setItemIconTintList(null);
 
         dl = findViewById(R.id.drawer_layout);
+
         Toolbar toolbar = findViewById(R.id.ToolbarFront);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        ActionBarDrawerToggle t = new ActionBarDrawerToggle(this, dl,R.string.nav_app_bar_open_drawer_description, R.string.navigation_drawer_close);
+        toolbar.setNavigationIcon(R.drawable.menu1);
+        ActionBarDrawerToggle t = new ActionBarDrawerToggle(this, dl, toolbar,R.string.nav_app_bar_open_drawer_description, R.string.navigation_drawer_close);
+        dl.addDrawerListener(t);
+        t.setDrawerIndicatorEnabled(true);
+        t.syncState();
+        dl.setStatusBarBackgroundColor(getResources().getColor(R.color.bg1));
+        t.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.white));
 
-        dl.setDrawerListener(t);
 
         nv = findViewById(R.id.side_nav_view);
         nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -109,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
             {
                 case R.id.Shop:
                     selectedFragment = new ShopFragement();
+
                     break;
 
                 case R.id.SuperCoin:
