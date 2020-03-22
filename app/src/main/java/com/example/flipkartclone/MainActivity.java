@@ -8,10 +8,13 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -19,10 +22,12 @@ import com.google.android.material.navigation.NavigationView;
 public class MainActivity extends AppCompatActivity {
 
 
+    int backPressedOnce = 0;
     BottomNavigationView bottomNavigationView;
     private DrawerLayout dl;
     private ActionBarDrawerToggle t;
     private NavigationView nv;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +41,17 @@ public class MainActivity extends AppCompatActivity {
 
         dl = findViewById(R.id.drawer_layout);
         t = new ActionBarDrawerToggle(this, dl,R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+
+
         dl.addDrawerListener(t);
         t.syncState();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+
+
         nv = findViewById(R.id.side_nav_view);
+
 
 
         nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -67,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                 }
 
-
+                dl.closeDrawer(GravityCompat.START);
 
                 return true;
             }
@@ -75,10 +86,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.action_bar_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         if(t.onOptionsItemSelected(item))
             return true;
+
+        int id = item.getItemId();
+        if(id==R.id.Profile_nav_button)
+        {
+            Intent i = new Intent(this, ProfileActivity.class);
+            startActivity(i);
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -114,4 +138,21 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+
+
+    @Override
+    public void onBackPressed() {
+
+        if(backPressedOnce == 0)
+        {
+            backPressedOnce = 1;
+            Toast.makeText(this, "Press again to Exit", Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            finish();
+            System.exit(0);
+        }
+
+    }
 }
