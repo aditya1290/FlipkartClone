@@ -7,15 +7,11 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
@@ -25,8 +21,9 @@ public class MainActivity extends AppCompatActivity {
     int backPressedOnce = 0;
     BottomNavigationView bottomNavigationView;
     private DrawerLayout dl;
-    private ActionBarDrawerToggle t;
+
     private NavigationView nv;
+    Toolbar toolbar;
 
 
     @Override
@@ -40,20 +37,16 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
 
         dl = findViewById(R.id.drawer_layout);
-        t = new ActionBarDrawerToggle(this, dl,R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-
-
-        dl.addDrawerListener(t);
-        t.syncState();
-
+        Toolbar toolbar = findViewById(R.id.ToolbarFront);
+        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
+        ActionBarDrawerToggle t = new ActionBarDrawerToggle(this, dl,R.string.nav_app_bar_open_drawer_description, R.string.navigation_drawer_close);
+
+        dl.setDrawerListener(t);
 
         nv = findViewById(R.id.side_nav_view);
-
-
-
         nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
             @Override
@@ -94,9 +87,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if(t.onOptionsItemSelected(item))
-            return true;
-
         int id = item.getItemId();
         if(id==R.id.Profile_nav_button)
         {
@@ -106,6 +96,8 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -154,5 +146,5 @@ public class MainActivity extends AppCompatActivity {
             System.exit(0);
         }
 
-    }
+    }                                                       // Exit once more
 }
