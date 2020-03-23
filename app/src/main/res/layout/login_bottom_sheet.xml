@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="500dp"
+    android:background="@drawable/login_bottom_sheet">
+
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           android:layout_marginTop="20dp">
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:gravity="center"
+               android:text="Login"
+               android:textColor="#123456"
+               android:textSize="40sp"
+               android:textStyle="bold" />
+           <EditText
+               android:id="@+id/EmailFieldEntry"
+               android:layout_width="match_parent"
+               android:layout_height="50dp"
+               android:layout_margin="20dp"
+               android:hint="   Email"
+               android:textColorHint="@color/white"
+               android:textStyle="bold"
+               android:textColor="@color/white"
+               android:background="@color/hamburgerBlack"
+               android:padding="3dp"
+               android:paddingLeft="5dp"
+               />
+
+           <EditText
+               android:id="@+id/PasswordFieldEntry"
+               android:layout_width="match_parent"
+               android:layout_height="50dp"
+               android:layout_margin="20dp"
+               android:layout_marginTop="0dp"
+               android:hint="   Password"
+               android:textColor="@color/white"
+               android:textColorHint="@color/white"
+               android:textStyle="bold"
+               android:background="@color/hamburgerBlack"
+               android:padding="3dp"
+               android:paddingLeft="5dp"
+               />
+
+           <Button
+               android:id="@+id/LoginButtonClick"
+               android:layout_width="140dp"
+               android:layout_height="55dp"
+               android:layout_margin="20dp"
+               android:elevation="30dp"
+               android:text="SUBMIT"
+               android:onClick="LoginUser"
+               android:textStyle="bold"
+               android:textSize="25sp"
+               android:layout_gravity="left"
+               />
+
+           <TextView
+               android:id="@+id/ChangeLoginType"
+               android:layout_width="wrap_content"
+               android:layout_height="match_parent"
+               android:textSize="15sp"
+               android:text="Login By Phone Number Instead ?"
+               android:textColor="@color/white"
+               android:textStyle="italic"
+               android:layout_marginRight="10dp"
+               android:layout_gravity="right"
+               />
+
+       </LinearLayout>
+
+       <ImageView
+           android:layout_width="77dp"
+           android:layout_height="73dp"
+           android:layout_alignParentBottom="true"
+
+           android:src="@drawable/rocket_filled" />
+</RelativeLayout>
+
+    <!--  Bottom sheet for login  -->
+
