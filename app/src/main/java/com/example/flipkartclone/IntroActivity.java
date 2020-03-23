@@ -5,8 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.util.DisplayMetrics;
+
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
@@ -17,13 +16,19 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.example.flipkartclone.Models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.animation.AnimatorSetCompat;
+
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class IntroActivity extends AppCompatActivity {
 
@@ -36,6 +41,9 @@ public class IntroActivity extends AppCompatActivity {
 
     FirebaseAuth auth;
     DatabaseReference reference;
+    FirebaseUser user;
+
+    int userid;
 
 
     @Override
@@ -45,10 +53,19 @@ public class IntroActivity extends AppCompatActivity {
 
         RR12 = findViewById(R.id.RR1);
         auth = FirebaseAuth.getInstance();
+        reference = FirebaseDatabase.getInstance().getReference();
 
+        reference.child("UserID").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                userid = Integer.valueOf(dataSnapshot.getValue().toString());
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-
+            }
+        });
 
 
         getWindow().setStatusBarColor(getResources().getColor(R.color.IntroActivityBlack));
@@ -72,6 +89,7 @@ public class IntroActivity extends AppCompatActivity {
         s1.setFillAfter(true);
         RR12.startAnimation(s1);
         RR12.setAlpha(1);
+
 
 
         login_show_sheet = findViewById(R.id.LoginBottomSheet);
@@ -136,7 +154,7 @@ public class IntroActivity extends AppCompatActivity {
                         Name = RegisterName.getText().toString();
                         Phone = RegisterPhone.getText().toString();
 
-                        createUser(email,Pass, Name, Phone);
+                        createUser(email,Pass, Name, Phone,userid);
 
                     }
                 });
@@ -184,8 +202,10 @@ public class IntroActivity extends AppCompatActivity {
 
 
 
-    public void createUser(String email, String Pass, String Name, String Phone)
+    public void createUser(final String email,final  String Pass,final String Name,final String Phone, final int userid)
     {
+
+            final String UserID = "User"+ String.valueOf(userid+1);
 
 
         if(email.isEmpty() || Pass.isEmpty())
@@ -206,7 +226,21 @@ public class IntroActivity extends AppCompatActivity {
                             }
                             else
                             {
-                                Toast.makeText(IntroActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                                user = auth.getCurrentUser();
+                                User User1 = new User(UserID,Name,Pass,Phone,email,0);
+                                reference.child("User").child(user.getUid()).setValue(User1)
+                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if(task.isSuccessful())
+                                                {
+                                                    reference.child("UserID").setValue(userid+1);
+                                                    Toast.makeText(IntroActivity.this, "Go back and Login", Toast.LENGTH_SHORT).show();
+
+                                                }
+                                            }
+                                        });
+
                             }
                         }
                     });
