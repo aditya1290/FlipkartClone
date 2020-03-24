@@ -1,12 +1,14 @@
 package com.example.flipkartclone;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -30,6 +32,7 @@ public class ShopFragement extends Fragment {
 
     SliderLayout sliderLayout;
     DatabaseReference reference;
+    Button Addprod;
 
 
     @Nullable
@@ -43,6 +46,15 @@ public class ShopFragement extends Fragment {
         sliderLayout = view.findViewById(R.id.ImageSlider);
         sliderLayout.setIndicatorAnimation(IndicatorAnimations.WORM);
         sliderLayout.setScrollTimeInSec(2);
+
+        Addprod = view.findViewById(R.id.productsAdd);
+//        Addprod.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                sendData();
+//            }
+//        });
+
         return view;
     }
 
@@ -83,6 +95,13 @@ public class ShopFragement extends Fragment {
 
         super.onViewCreated(view, savedInstanceState);
     }
+
+    public void sendData()
+    {
+        Intent i = new Intent(getActivity().getBaseContext(), AddProd.class);
+        startActivity(i);
+    }
+
 }
 
 

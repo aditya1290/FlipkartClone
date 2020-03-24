@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp"
+    app:cardBackgroundColor="#eeeeee"
+    app:cardCornerRadius="15dp"
+    android:id="@+id/cardview_mobile"
+    android:elevation="15dp">
+
+    <ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="18dp"
+    android:src="@drawable/ic_star_black_24dp"
+    android:layout_gravity="right"
+        />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:layout_marginRight="18dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/ic_star_black_24dp"
+        android:layout_gravity="right"
+
+        />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            
+            <ImageView
+                android:id="@+id/Phone_image"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:scaleType="centerCrop"
+                android:layout_margin="10dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.4"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/Mobile_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textSize="20sp"
+                    android:layout_marginRight="18dp"
+                    android:text="Mobile_Name"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_marginLeft="15dp"
+                    />
+                <TextView
+                    android:id="@+id/Rating_Mobile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:textStyle="italic"
+                    android:drawableLeft="@drawable/ic_star_black_24dp"
+                    android:text="Rating"
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:id="@+id/NewPrice"
+                        android:layout_height="wrap_content"
+                        android:text="New Price"
+
+                        android:textSize="17dp"
+                        android:textColor="#000000"
+                        android:elevation="40dp"
+                        android:layout_marginRight="15dp"/>
+
+
+                    <TextView
+                        android:id="@+id/OldPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="oldPrice"
+                        android:textSize="15dp"
+                        android:textColor="#987654"
+                        />
+
+                    <TextView
+                        android:id="@+id/OffMobiles"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="% Off"
+                        android:layout_marginLeft="20dp"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+            
+            
+            
+            
+        </LinearLayout>
+    
+    
+</androidx.cardview.widget.CardView>
