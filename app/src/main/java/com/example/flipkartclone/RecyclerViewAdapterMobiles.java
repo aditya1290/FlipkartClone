@@ -72,7 +72,7 @@ public class RecyclerViewAdapterMobiles extends RecyclerView.Adapter<RecyclerVie
         int s3 = productMobileList.get(position).getStar3();
         int s2 = productMobileList.get(position).getStar2();
         int s1 = productMobileList.get(position).getStar1();
-        double s = (s5*5+s4*4+s3*3+s2*2+s1)/(s1+s2+s3+s4+s5);
+        double s = ((double)s5*5+s4*4+s3*3+s2*2+s1)/(s1+s2+s3+s4+s5);
         holder.Rating_Mobile.setText(String.valueOf(s));
         int price = Integer.valueOf(productMobileList.get(position).getPrice());
         String only = "Rs. "+String.valueOf(price);
