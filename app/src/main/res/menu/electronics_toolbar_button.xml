@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ElectronicsActivity">
+
+
+    <item
+        android:id="@+id/search_toolbar"
+        android:icon="@drawable/searching"
+        android:title="Search"
+        app:showAsAction="ifRoom|withText"
+        app:actionViewClass="android.widget.SearchView"
+        />
+    <item
+        android:id="@+id/Cart_toolbar"
+        android:title="Cart"
+        android:icon="@drawable/cart_filled"
+        app:showAsAction="ifRoom|collapseActionView"/>
+
+</menu>

@@ -4,16 +4,29 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.app.ProgressDialog;
+import android.app.SearchManager;
+import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.flipkartclone.Models.ProductMobile;
@@ -28,31 +41,27 @@ import java.util.List;
 
 public class ElectronicsActivity extends AppCompatActivity {
 
+    SwipeRefreshLayout swipeRefreshLayout;
     RecyclerView recyclerview;
-    final int ITEM_LOAD_COUNT = 20;
+    final int ITEM_LOAD_COUNT = 15;
     int total_item = 0,last_visible_item;
     RecyclerViewAdapterMobiles recyclerViewAdapterMobiles;
     boolean isLoading = false, isMaxData = false;
 
     String last_node="",last_key="";
+    EditText Search_ediitext;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_electronics);
 
-        Toolbar toolbar = findViewById(R.id.Electronics_Toolbar);
+        toolbar = findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
 
+        swipeRefreshLayout = findViewById(R.id.SwipeRefreshElectronics);
         recyclerview = findViewById(R.id.RecycleElectronics);
-
 
         getLastKeyFromFirebase();
 
@@ -65,6 +74,20 @@ public class ElectronicsActivity extends AppCompatActivity {
         recyclerview.setAdapter(recyclerViewAdapterMobiles);
         
         getProducts();
+
+        swipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.Red),getResources().getColor(R.color.Blue));
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        recyclerViewAdapterMobiles.notifyDataSetChanged();
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                },3000);
+            }
+        });
 
         recyclerview.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -83,6 +106,33 @@ public class ElectronicsActivity extends AppCompatActivity {
         });
     }
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.electronics_toolbar_button,menu);
+
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        int id = item.getItemId();
+        if(id==R.id.search_toolbar)
+        {
+
+
+        }
+        if(id==R.id.Cart_toolbar)
+        {
+            Intent i = new Intent(this, CartActivity.class);
+            startActivity(i);
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
     private void getProducts() {
         if(!isMaxData)
         {
@@ -99,6 +149,10 @@ public class ElectronicsActivity extends AppCompatActivity {
                         .startAt(last_node)
                         .limitToFirst(ITEM_LOAD_COUNT);
 
+            final ProgressDialog Dialog = new ProgressDialog(this);
+            Dialog.setMessage("Fetching data...");
+            Dialog.setCanceledOnTouchOutside(false);
+            Dialog.show();
             query.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -120,12 +174,15 @@ public class ElectronicsActivity extends AppCompatActivity {
 
                         recyclerViewAdapterMobiles.addAll(productMobiles);
                         isLoading = false;
+                        Dialog.hide();
+
                     }
                     else
                     {
                         isLoading = false;
                         isMaxData = true;
                     }
+
                 }
 
                 @Override

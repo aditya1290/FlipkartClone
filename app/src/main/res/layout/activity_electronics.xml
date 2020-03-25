@@ -4,21 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#123456"
     tools:context=".ElectronicsActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:id="@+id/Electronics_Toolbar"
-        android:background="@drawable/gradient_preeti">
-    </androidx.appcompat.widget.Toolbar>
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/electroonics_toolbar"/>
 
     <LinearLayout
         android:id="@+id/Sort_Filter"
-        android:layout_below="@+id/Electronics_Toolbar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginTop="50dp"
         android:orientation="horizontal"
         >
         <Button
@@ -38,17 +34,24 @@
     </LinearLayout>
 
 
-    <androidx.recyclerview.widget.RecyclerView
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
+        android:id="@+id/SwipeRefreshElectronics"
         android:layout_height="match_parent"
-        android:layout_below="@+id/Sort_Filter"
-        android:id="@+id/RecycleElectronics"
-        android:layout_margin="5dp"
-        >
+        android:layout_below="@id/Sort_Filter">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/Sort_Filter"
+            android:id="@+id/RecycleElectronics"
+            android:layout_marginTop="5dp"
+            >
 
+        </androidx.recyclerview.widget.RecyclerView>
 
-    </androidx.recyclerview.widget.RecyclerView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 
 
 </RelativeLayout>

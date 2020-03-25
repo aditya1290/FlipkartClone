@@ -8,4 +8,7 @@
 
     <color name="hamburgerBlack">#000000</color>
     <color name="IntroActivityBlack">#070611</color>
+    <color name="Blue">#0000FF</color>
+    <color name="Red">#FF0000</color>
+    <color name="offM">#00ffDD</color>
 </resources>

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="130dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="10dp"
-    app:cardBackgroundColor="#eeeeee"
-    app:cardCornerRadius="15dp"
+    android:layout_margin="5dp"
     android:id="@+id/cardview_mobile"
     android:elevation="15dp">
 
@@ -39,7 +37,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.1"
                 android:scaleType="centerCrop"
-                android:layout_margin="10dp"
+                android:layout_margin="5dp"
                 />
 
             <LinearLayout
@@ -52,9 +50,9 @@
                     android:id="@+id/Mobile_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     android:textSize="20sp"
-                    android:layout_marginRight="18dp"
+                    android:layout_marginRight="50dp"
                     android:text="Mobile_Name"
                     android:textStyle="bold"
                     android:textColor="#000000"
@@ -65,7 +63,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
+                    android:padding="5dp"
                     android:layout_marginLeft="15dp"
+                    android:background="#C44900"
                     android:textSize="18sp"
                     android:textColor="@color/white"
                     android:textStyle="italic"
@@ -85,10 +85,9 @@
                         android:id="@+id/NewPrice"
                         android:layout_height="wrap_content"
                         android:text="New Price"
-
                         android:textSize="17dp"
                         android:textColor="#000000"
-                        android:elevation="40dp"
+                        android:elevation="10dp"
                         android:layout_marginRight="15dp"/>
 
 
@@ -106,7 +105,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="% Off"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="@color/offM"
                         />
 
                 </LinearLayout>

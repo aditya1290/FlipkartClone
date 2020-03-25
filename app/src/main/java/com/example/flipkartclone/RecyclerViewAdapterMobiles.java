@@ -1,6 +1,7 @@
 package com.example.flipkartclone;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -62,8 +63,7 @@ public class RecyclerViewAdapterMobiles extends RecyclerView.Adapter<RecyclerVie
         String str = productMobileList.get(position).getURL().toString();
 
         Glide.with(c)
-                .load(new File(str))
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .load(str)
                 .into(holder.Phone_image);
 
         holder.Mobile_name.setText(productMobileList.get(position).getName());
@@ -72,7 +72,13 @@ public class RecyclerViewAdapterMobiles extends RecyclerView.Adapter<RecyclerVie
         int s3 = productMobileList.get(position).getStar3();
         int s2 = productMobileList.get(position).getStar2();
         int s1 = productMobileList.get(position).getStar1();
-        double s = ((double)s5*5+s4*4+s3*3+s2*2+s1)/(s1+s2+s3+s4+s5);
+        double s;
+        if(s1+s2+s3+s4+s5==0)
+            s = 0;
+        else
+            s = ((double)s5*5+s4*4+s3*3+s2*2+s1)/(s1+s2+s3+s4+s5);
+
+
         holder.Rating_Mobile.setText(String.valueOf(s));
         int price = Integer.valueOf(productMobileList.get(position).getPrice());
         String only = "Rs. "+String.valueOf(price);
@@ -80,7 +86,7 @@ public class RecyclerViewAdapterMobiles extends RecyclerView.Adapter<RecyclerVie
         int x = productMobileList.get(position).getOffMobile();
         String pr = String.valueOf(x) + "% Off";
         holder.OffMobiles.setText(pr);
-        pr = String.valueOf(price*x/100);
+        pr = "Rs "+String.valueOf(price*(100-x)/100);
         holder.NewPrice.setText(pr);
 
 
@@ -113,6 +119,8 @@ public class RecyclerViewAdapterMobiles extends RecyclerView.Adapter<RecyclerVie
             NewPrice = itemView.findViewById(R.id.NewPrice);
             OldPrice = itemView.findViewById(R.id.OldPrice);
             OffMobiles = itemView.findViewById(R.id.OffMobiles);
+            OldPrice.setPaintFlags(OldPrice.getPaintFlags()| Paint.STRIKE_THRU_TEXT_FLAG);
+
         }
     }
 
