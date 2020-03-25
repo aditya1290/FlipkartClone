@@ -1,6 +1,7 @@
 package com.example.flipkartclone;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Paint;
 import android.text.Layout;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,6 +25,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RecyclerViewAdapterMobiles extends RecyclerView.Adapter<RecyclerViewAdapterMobiles.MyViewHolder> {
+
+
 
     public RecyclerViewAdapterMobiles(Context c) {
         this.c = c;
@@ -45,7 +49,6 @@ public class RecyclerViewAdapterMobiles extends RecyclerView.Adapter<RecyclerVie
     }
 
 
-
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -58,7 +61,7 @@ public class RecyclerViewAdapterMobiles extends RecyclerView.Adapter<RecyclerVie
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final MyViewHolder holder, int position) {
 
         String str = productMobileList.get(position).getURL().toString();
 
@@ -66,6 +69,7 @@ public class RecyclerViewAdapterMobiles extends RecyclerView.Adapter<RecyclerVie
                 .load(str)
                 .into(holder.Phone_image);
 
+        String name = productMobileList.get(position).getName();
         holder.Mobile_name.setText(productMobileList.get(position).getName());
         int s5 = productMobileList.get(position).getStar5();
         int s4 = productMobileList.get(position).getStar4();
@@ -89,9 +93,14 @@ public class RecyclerViewAdapterMobiles extends RecyclerView.Adapter<RecyclerVie
         pr = "Rs "+String.valueOf(price*(100-x)/100);
         holder.NewPrice.setText(pr);
 
-
-
-
+        holder.cardView_mob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(c,PersonalFrameActivity.class);
+                i.putExtra("ProductID", holder.Mobile_name.getText().toString());
+                c.startActivity(i);
+            }
+        });
 
     }
 
@@ -102,9 +111,14 @@ public class RecyclerViewAdapterMobiles extends RecyclerView.Adapter<RecyclerVie
 
 
 
+
+
+
     public static class MyViewHolder extends RecyclerView.ViewHolder
     {
 
+
+        CardView cardView_mob;
         ImageView Phone_image;
         TextView Mobile_name;
         TextView Rating_Mobile;
@@ -113,6 +127,9 @@ public class RecyclerViewAdapterMobiles extends RecyclerView.Adapter<RecyclerVie
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            cardView_mob = itemView.findViewById(R.id.cardview_mobile);
+
             Phone_image = itemView.findViewById(R.id.Phone_image);
             Mobile_name = itemView.findViewById(R.id.Mobile_name);
             Rating_Mobile = itemView.findViewById(R.id.Rating_Mobile);
@@ -121,7 +138,12 @@ public class RecyclerViewAdapterMobiles extends RecyclerView.Adapter<RecyclerVie
             OffMobiles = itemView.findViewById(R.id.OffMobiles);
             OldPrice.setPaintFlags(OldPrice.getPaintFlags()| Paint.STRIKE_THRU_TEXT_FLAG);
 
+
+
+
         }
+
     }
+
 
 }

@@ -47,7 +47,16 @@ public class ShopFragement extends Fragment {
         sliderLayout.setIndicatorAnimation(IndicatorAnimations.WORM);
         sliderLayout.setScrollTimeInSec(2);
 
-        Addprod = view.findViewById(R.id.productsAdd);
+        Addprod = view.findViewById(R.id.Personal);
+        Addprod.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), PersonalFrameActivity.class);
+                startActivity(i);
+            }
+        });
+
+
 //        Addprod.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {

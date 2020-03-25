@@ -46,11 +46,14 @@ public class ElectronicsActivity extends AppCompatActivity {
     final int ITEM_LOAD_COUNT = 15;
     int total_item = 0,last_visible_item;
     RecyclerViewAdapterMobiles recyclerViewAdapterMobiles;
+
     boolean isLoading = false, isMaxData = false;
 
     String last_node="",last_key="";
     EditText Search_ediitext;
     private Toolbar toolbar;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +77,7 @@ public class ElectronicsActivity extends AppCompatActivity {
         recyclerview.setAdapter(recyclerViewAdapterMobiles);
         
         getProducts();
+
 
         swipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.Red),getResources().getColor(R.color.Blue));
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
