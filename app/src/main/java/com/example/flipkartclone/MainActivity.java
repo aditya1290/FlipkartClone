@@ -13,8 +13,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
+import com.example.flipkartclone.Models.DAddress;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
 
     private NavigationView nv;
     Toolbar toolbar;
+    FirebaseUser user;
+    DatabaseReference reference;
 
 
     @Override
@@ -32,6 +40,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        reference = FirebaseDatabase.getInstance().getReference();
+
+        String A[]={"A","E","I","D"};
+        String B[]={"B","F","J","H"};
+        String C[]={"C","G","K","X"};
+
+
+        for(int i=0;i<4;i++)
+        {
+            DAddress dAddress = new DAddress();
+            dAddress.setAddress(A[i]);
+            dAddress.setPincode(C[i]);
+            dAddress.setCity(B[i]);
+            reference.child("User").child(user.getUid()).child("AddressMain").child(String.valueOf(i)).setValue(dAddress);
+        }
 
         getWindow().setStatusBarColor(getResources().getColor(R.color.bg1));
 

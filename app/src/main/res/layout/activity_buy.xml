@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BuyActivity">
+
+    <LinearLayout
+        android:id="@+id/LL1"
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal"
+        >
+        <ImageView
+            android:id="@+id/Buy_image"
+            android:layout_width="80dp"
+            android:layout_height="120dp"
+            android:layout_marginLeft="5dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/gradient_preeti"
+            />
+
+        <LinearLayout
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            >
+
+            <TextView
+                android:id="@+id/Buy_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Price"
+                    android:textSize="19sp"
+                    android:textStyle="italic"
+                    android:textColor="#444"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:id="@+id/Buy_price_output"
+                    android:textSize="19sp"
+                    android:textStyle="bold"
+                    android:textColor="#222"
+                    android:textAlignment="textEnd"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#444"
+                    android:textSize="18sp"
+                    android:textStyle="italic"
+                    android:text="Delivery Charges"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#222"
+                    android:id="@+id/Buy_delivery_output"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#444"
+                    android:textSize="18sp"
+                    android:textStyle="italic"
+                    android:text="Offer Discount"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#222"
+                    android:id="@+id/Buy_offer_discount"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    />
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <View
+                    android:layout_width="70dp"
+                    android:layout_height="1dp"
+                    android:background="#222"
+                    android:layout_alignParentRight="true"
+                    />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#444"
+                    android:textSize="18sp"
+
+                    android:textStyle="italic"
+                    android:text="Total"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#222"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:id="@+id/Buy_offer_total"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Click to see offers"
+            android:layout_below="@+id/LL1"
+            android:layout_marginTop="20dp"
+            android:textColor="#193"
+            android:id="@+id/Offers_check"
+            android:layout_marginLeft="20dp"
+            />
+
+    <RelativeLayout
+        android:id="@+id/RL1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Offers_check"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:id="@+id/buy_TT1"
+            android:textColor="#139"
+            android:padding="10dp"
+            android:text="Select Delivery Address"
+            android:layout_marginRight="15dp"
+            android:textSize="17sp"
+            android:background="@drawable/buy_page_1"
+            android:drawableRight="@drawable/ic_star_black_24dp"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rec1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_marginRight="15dp"
+            android:layout_below="@id/buy_TT1">
+
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </RelativeLayout>
+
+
+
+   <RelativeLayout
+       android:id="@+id/RL2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/RL1"
+        android:layout_marginTop="30dp"
+        >
+
+
+        <Button
+            android:id="@+id/BUY_PRODUCT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="PROCEED"
+            android:layout_marginRight="15dp"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:layout_alignParentRight="true"
+            android:background="#139"
+            />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/RL2"
+        android:layout_marginTop="30dp"
+        android:paddingLeft="20dp"
+        android:text="We have not yet included the payment gateways So, Clicking on proceed will be enough to buy any product and you will be redirected to your orders page."
+        android:textColor="#017" />
+
+
+</RelativeLayout>

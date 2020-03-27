@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.flipkartclone.Models.User;
@@ -36,6 +38,7 @@ public class IntroActivity extends AppCompatActivity {
     Button login_show_sheet,register_show_sheet;
     Button Login, Register;
     RelativeLayout RR12;
+    TextView ForgetPass;
 
     EditText LoginEmail, LoginPass,RegisterEmail, RegisterName, RegisterPass, RegisterPhone;
 
@@ -100,26 +103,54 @@ public class IntroActivity extends AppCompatActivity {
         login_show_sheet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(IntroActivity.this);
+                final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(IntroActivity.this);
                 bottomSheetDialog.setContentView(R.layout.login_bottom_sheet);
 
                 LoginEmail = bottomSheetDialog.findViewById(R.id.EmailFieldEntry);
                 LoginPass = bottomSheetDialog.findViewById(R.id.PasswordFieldEntry);
                 Login = bottomSheetDialog.findViewById(R.id.LoginButtonClick);
+                ForgetPass = bottomSheetDialog.findViewById(R.id.ForgetPassword);
 
                 bottomSheetDialog.show();
+
+                ForgetPass.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        String email1 = LoginEmail.getText().toString();
+                        if(email1.equals(""))
+                            Toast.makeText(IntroActivity.this, "Enter email id and then hit forget password", Toast.LENGTH_SHORT).show();
+                        else {
+                            auth.sendPasswordResetEmail(email1)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                Toast.makeText(IntroActivity.this, "Email has been sent to your registered Email id", Toast.LENGTH_SHORT).show();
+                                                bottomSheetDialog.dismiss();
+                                            }
+                                            else
+                                            {
+                                                Toast.makeText(IntroActivity.this, "There has been some error\nTry Again", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+
+
+                        }
+                    }
+                });
 
 
                 Login.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 
-
                         String email = LoginEmail.getText().toString();
                         String Pass = LoginPass.getText().toString();
 
                         LoginUser1(email,Pass);
-
+                        bottomSheetDialog.dismiss();
                     }
                 });
 
@@ -130,12 +161,8 @@ public class IntroActivity extends AppCompatActivity {
         register_show_sheet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(IntroActivity.this);
+                final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(IntroActivity.this);
                 bottomSheetDialog.setContentView(R.layout.register_bottom_sheet);
-
-
                 RegisterName = bottomSheetDialog.findViewById(R.id.NameFieldRegister);
                 RegisterEmail = bottomSheetDialog.findViewById(R.id.EmailFieldRegister);
                 RegisterPhone = bottomSheetDialog.findViewById(R.id.PhoneFieldRegister);
@@ -154,8 +181,7 @@ public class IntroActivity extends AppCompatActivity {
                         Name = RegisterName.getText().toString();
                         Phone = RegisterPhone.getText().toString();
 
-                        createUser(email,Pass, Name, Phone,userid);
-
+                        createUser(bottomSheetDialog,email,Pass, Name, Phone,userid);
                     }
                 });
 
@@ -202,7 +228,7 @@ public class IntroActivity extends AppCompatActivity {
 
 
 
-    public void createUser(final String email,final  String Pass,final String Name,final String Phone, final int userid)
+    public void createUser(final BottomSheetDialog bottomSheetDialog, final String email, final  String Pass, final String Name, final String Phone, final int userid)
     {
 
             final String UserID = "User"+ String.valueOf(userid+1);
@@ -222,7 +248,6 @@ public class IntroActivity extends AppCompatActivity {
                             if(!task.isSuccessful())
                             {
                                 Toast.makeText(IntroActivity.this, "Problem Arise", Toast.LENGTH_SHORT).show();
-
                             }
                             else
                             {
@@ -236,10 +261,14 @@ public class IntroActivity extends AppCompatActivity {
                                                 {
                                                     reference.child("UserID").setValue(userid+1);
                                                     Toast.makeText(IntroActivity.this, "Go back and Login", Toast.LENGTH_SHORT).show();
-
+                                                    bottomSheetDialog.dismiss();
                                                 }
                                             }
                                         });
+
+                                reference.child("User").child(user.getUid()).child("AddressMain").child("-1").setValue("0");
+                                reference.child("User").child(user.getUid()).child("CartMain").child("-1").setValue("0");
+                                reference.child("User").child(user.getUid()).child("OrdersMain").child("-1").setValue("0");
 
                             }
                         }

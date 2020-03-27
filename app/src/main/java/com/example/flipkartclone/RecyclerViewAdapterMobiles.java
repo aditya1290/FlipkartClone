@@ -26,15 +26,14 @@ import java.util.List;
 
 public class RecyclerViewAdapterMobiles extends RecyclerView.Adapter<RecyclerViewAdapterMobiles.MyViewHolder> {
 
-
+    private Context c;
+    private ArrayList<ProductMobile> productMobileList;
 
     public RecyclerViewAdapterMobiles(Context c) {
         this.c = c;
         this.productMobileList = new ArrayList<>();
     }
 
-    private Context c;
-    private ArrayList<ProductMobile> productMobileList;
 
 
     public void addAll(ArrayList<ProductMobile>PM)
@@ -108,9 +107,6 @@ public class RecyclerViewAdapterMobiles extends RecyclerView.Adapter<RecyclerVie
     public int getItemCount() {
         return productMobileList.size();
     }
-
-
-
 
 
 

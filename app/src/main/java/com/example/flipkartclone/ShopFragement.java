@@ -10,12 +10,15 @@ import android.view.ViewGroup;
 
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -43,37 +46,27 @@ public class ShopFragement extends Fragment {
 
         reference = FirebaseDatabase.getInstance().getReference().child("ImageSliderLink");
 
+        FirebaseUser user;
+        user = FirebaseAuth.getInstance().getCurrentUser();
+
         sliderLayout = view.findViewById(R.id.ImageSlider);
         sliderLayout.setIndicatorAnimation(IndicatorAnimations.WORM);
         sliderLayout.setScrollTimeInSec(2);
 
-        Addprod = view.findViewById(R.id.Personal);
-        Addprod.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getActivity(), PersonalFrameActivity.class);
-                startActivity(i);
-            }
-        });
-
-
-//        Addprod.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                sendData();
-//            }
-//        });
+        TextView TT1 = view.findViewById(R.id.TT1);
 
         return view;
     }
 
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+
                 String x = dataSnapshot.child("-1").getValue().toString();
                 int x1 = Integer.valueOf(x);
 
@@ -92,7 +85,6 @@ public class ShopFragement extends Fragment {
 
                     sliderLayout.addSliderView(sliderView);
                 }
-
             }
 
             @Override

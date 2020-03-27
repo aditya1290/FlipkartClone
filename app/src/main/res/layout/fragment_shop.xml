@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -11,15 +10,23 @@
             android:id="@+id/ImageSlider">
         </com.smarteist.autoimageslider.SliderLayout>
 
-<Button
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Add Products"
-    android:id="@+id/Personal"
-    android:layout_centerInParent="true"
-    />
-
-
-
+        <TextView
+            android:layout_below="@id/ImageSlider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:textSize="40sp"
+            android:id="@+id/TT1"
+            android:textColor="#429"
+            android:text="Hiii "/>
+        <TextView
+            android:layout_below="@id/TT1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:textSize="15sp"
+            android:textColor="#924"
+            android:text="Since Due to not enough Database\nwe are currently not giving much information\nabout Our varied Product range\n. You can chcek the products from Side navigation and \ncurrrently only Electronics option is available"
+            />
 
 </RelativeLayout>

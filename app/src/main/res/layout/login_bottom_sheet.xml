@@ -62,14 +62,14 @@
                />
 
            <TextView
-               android:id="@+id/ChangeLoginType"
+               android:id="@+id/ForgetPassword"
                android:layout_width="wrap_content"
                android:layout_height="match_parent"
                android:textSize="15sp"
-               android:text="Login By Phone Number Instead ?"
+               android:text="Forget Your Password ?"
                android:textColor="@color/white"
                android:textStyle="italic"
-               android:layout_marginRight="10dp"
+               android:layout_marginRight="15dp"
                android:layout_gravity="right"
                />
 

@@ -37,7 +37,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class ElectronicsActivity extends AppCompatActivity {
 
@@ -52,7 +52,6 @@ public class ElectronicsActivity extends AppCompatActivity {
     String last_node="",last_key="";
     EditText Search_ediitext;
     private Toolbar toolbar;
-
 
 
     @Override
@@ -109,7 +108,6 @@ public class ElectronicsActivity extends AppCompatActivity {
             }
         });
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
