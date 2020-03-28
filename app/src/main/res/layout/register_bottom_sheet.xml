@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#126543">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="REGISTER"
+            android:textColor="@color/white"
+            android:textSize="40sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/NameFieldRegister"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:background="#444444"
+            android:hint="   Name"
+            android:padding="3dp"
+            android:paddingLeft="5dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/EmailFieldRegister"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:layout_marginTop="0dp"
+            android:hint="   Email"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textStyle="bold"
+            android:background="#333333"
+            android:padding="3dp"
+            android:paddingLeft="5dp"
+            />
+
+        <EditText
+            android:id="@+id/PhoneFieldRegister"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:hint="   Phone"
+            android:textColorHint="@color/white"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:background="#222222"
+            android:padding="3dp"
+            android:paddingLeft="5dp"
+            />
+
+        <EditText
+            android:id="@+id/PasswordFieldRegister"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:layout_marginTop="0dp"
+            android:hint="   Password"
+            android:inputType="textPassword"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textStyle="bold"
+            android:background="#111111"
+            android:padding="3dp"
+            android:paddingLeft="5dp"
+            />
+        <Button
+            android:id="@+id/RegisterButtonClick"
+            android:layout_width="140dp"
+            android:layout_height="55dp"
+            android:layout_margin="20dp"
+            android:elevation="30dp"
+            android:text="SUBMIT"
+            android:onClick="createUser"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:layout_gravity="left"
+            />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="77dp"
+        android:layout_height="73dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/cart_filled" />
+</RelativeLayout>
+
+    <!--  Bottom sheet for login  -->
+

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".IntroActivity"
+    android:background="@drawable/mobile_background"
+    >
+
+    <ImageView
+        android:id="@+id/anim_f_logo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:src="@drawable/function"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/RR1"
+        android:alpha="0.0"
+        >
+
+
+        <View
+
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="180dp"
+            android:background="#c0c0c0"/>
+
+        <TextView
+            android:id="@+id/forAllBasicNeed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="For All Your\nShopping Needs"
+            android:textColor="@color/white"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:layout_marginTop="200dp"
+            android:textStyle="bold"
+
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true"
+            >
+
+            <Button
+                android:id="@+id/LoginBottomSheet"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:text="LOGIN"
+                android:background="#ff9900"
+                android:layout_margin="15dp"
+                android:textColor="#123456"
+                />
+
+            <Button
+                android:id="@+id/RegisterBottomSheet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="REGISTER"
+                android:layout_margin="15dp"
+                android:background="#9900ff"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="#000000"
+                />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+
+
+
+</RelativeLayout>

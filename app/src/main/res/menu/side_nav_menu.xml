@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <group
+            android:id="@+id/seperator1"
+            >
+                <item
+                    android:id="@+id/FlipkartPlusZone"
+                    android:title="Flipkart Plus Zone"
+                    android:icon="@drawable/magic"
+                    />
+        </group>
+
+        <group
+            android:id="@+id/seperator2">
+                <item
+                    android:id="@+id/Electronics"
+                    android:title="Electronics"
+                    android:icon="@drawable/laptop"
+                    />
+                <item
+                    android:id="@+id/Fashion"
+                    android:title="Fashion"
+                    android:icon="@drawable/polo_shirt"
+                    />
+                <item
+                    android:id="@+id/MobileAndTablet"
+                    android:title="Mobiles and Tablets"
+                    android:icon="@drawable/ipad"
+                    />
+                <item
+                    android:id="@+id/BillsAndRecharges"
+                    android:title="Bills and Recharges"
+                    android:icon="@drawable/invoice"
+                    />
+        </group>
+
+
+        <group
+            android:id="@+id/seperator3">
+                <item
+                    android:id="@+id/Language"
+                    android:title="Choose Language"
+                    android:icon="@drawable/language"
+                    />
+        </group>
+
+        <group
+            android:id="@+id/seperator4"
+            >
+                <item
+                    android:icon="@drawable/sale"
+                    android:id="@+id/MyOffer"
+                    android:title="My Offer"
+                    />
+                <item
+                    android:id="@+id/MyCart"
+                    android:icon="@drawable/supermarket"
+                    android:title="My Cart"
+                    />
+                <item
+                    android:id="@+id/MyWishlist"
+                    android:title="My Wishlist"
+                    android:icon="@drawable/heart"
+                    />
+                <item
+                    android:id="@+id/MyAccount"
+                    android:icon="@drawable/ic_person_black_24dp"
+                    android:title="My Account"
+                    />
+        </group>
+
+</menu>

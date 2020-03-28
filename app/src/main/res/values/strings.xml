@@ -25,4 +25,11 @@
     <string name="change_password">Change Password</string>
     <string name="deactivate_account">Deactivate Account</string>
 
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="text_with_bullets">\u2022</string>
 </resources>
+

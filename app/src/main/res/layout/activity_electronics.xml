@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ElectronicsActivity">
+
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/electroonics_toolbar"/>
+
+    <LinearLayout
+        android:id="@+id/Sort_Filter"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal"
+        >
+        <Button
+            android:id="@+id/Sort"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Sort"
+            android:layout_weight="0.5"
+            />
+        <Button
+            android:id="@+id/Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Filter"
+            android:layout_weight="0.5"
+            />
+    </LinearLayout>
+
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:id="@+id/SwipeRefreshElectronics"
+        android:layout_height="match_parent"
+        android:layout_below="@id/Sort_Filter">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/Sort_Filter"
+            android:id="@+id/RecycleElectronics"
+            android:layout_marginTop="5dp"
+            >
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+
+</RelativeLayout>
